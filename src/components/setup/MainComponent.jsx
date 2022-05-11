@@ -3,7 +3,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import OptionComponent from "./OptionComponent"
 import MainButton from '../button01'
 
-const SetupComponent = ({ title, options, next }) => {
+const SetupComponent = ({ title, options, next, saveOption }) => {
     const [selected, setSelected] = useState(null)
     return (
         <View style={style.container}>
@@ -11,7 +11,10 @@ const SetupComponent = ({ title, options, next }) => {
                 <Text style={style.question}>{title}</Text>
                 {options.length > 0 && options.map((option, index) => (
                     <OptionComponent
-                        select={(data) => { setSelected(data) }}
+                        select={(data) => { 
+                            setSelected(data) 
+                            saveOption(data)
+                        }}
                         id={index}
                         status={selected === index ? 1 : 0}
                         key={index}

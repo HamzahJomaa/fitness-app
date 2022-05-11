@@ -8,15 +8,17 @@ import SetupComponent from "../components/setup/MainComponent"
 
 const SetupScreen = ({ navigation }) => {
     const [step, setStep] = useState(1)
+    const [gender,setGender] = useState(null)
     return (
         <SafeAreaProvider style={MainStyle.background}>
             <SafeAreaView>
                 <SetupHeader navigation={navigation} step={step} total={8} />
-
+                <Text> Gender is: {gender}</Text>
                 <SetupComponent
                     key={1}
                     title={"Choose gender"}
                     options={["Women", "Men", "Others"]}
+                    saveOption={(data) => setGender(data) }
                     next={() => { setStep(prev => prev + 1) }}
                 />
             </SafeAreaView>
