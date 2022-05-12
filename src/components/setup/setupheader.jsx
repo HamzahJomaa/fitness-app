@@ -1,13 +1,12 @@
-import React from "react";
+import React,{useContext} from "react";
 import { Text, View,TouchableOpacity,StyleSheet } from "react-native";
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { primaryPurple } from "../../styles/colors";
-
+import { StepsContext } from "../../views/SetupScreen";
 
 const SetupHeader = ({navigation,step,total}) =>{
     return(
         <View style={style.container}>
-            <TouchableOpacity onPress={() => {navigation.openDrawer()}}><Icon name="arrow-left" color={"white"} solid size={40} /></TouchableOpacity>
+            <TouchableOpacity onPress={() => {navigation.openDrawer()}}></TouchableOpacity>
             <Text style={{color: primaryPurple}}>Step {step} of {total}</Text>
             <TouchableOpacity onPress={()=>{ navigation.navigate("home") }}><Text>Skip</Text></TouchableOpacity>
         </View>
