@@ -4,10 +4,14 @@ import LinearGradient from "react-native-linear-gradient"
 import { backgroundoption } from "../../styles/colors"
 
 
-const OptionComponent = ({ id ,title, status, select }) => {
-    const text = <Text style={style.containerText} >{title}</Text>
+const OptionComponent = ({ option, status, select }) => {
+    const text = <View style={style.containerText}>
+        <Text style={style.TitleText} >{option.title}</Text> 
+        {option.desc && <Text style={style.DescText}>{option.desc}</Text>}
+        </View>
+    
     return (
-        <TouchableOpacity onPress={()=>{select(id)}} style={style.containerTouchable}>
+        <TouchableOpacity onPress={()=>{select(option.id)}} style={style.containerTouchable}>
             {status ? 
             (<LinearGradient start={{ x: .3, y: 0.1 }} end={{ x: 0.5, y: 1 }} style={style.containerLinear} colors={backgroundoption}>
                 {text}
@@ -37,8 +41,19 @@ const style = StyleSheet.create({
     containerText:{
         textAlign:"center",
         height: "100%",
-        textAlignVertical: "center",
-        fontSize: 20
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "flex-start",
+        justifyContent: "center",
+        fontSize: 20,
+    },
+    TitleText:{
+        fontSize: 20,
+        color:"white"
+    },
+    DescText:{
+        color: "white",
+        fontWeight: "300"
     }
 })
 
